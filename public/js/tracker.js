@@ -30,7 +30,7 @@
     referrer: ref || "Direct",
   };
 
-  fetch("https://pixeltrackapi.startgrid.xyz/track", {
+  fetch("https://tracking-api-lac.vercel.app/track", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
