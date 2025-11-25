@@ -59,13 +59,6 @@ const WeeklyVisitChart = ({ visits, visitsData, project }) => {
     const visitsByDay = filterDataByWeek(visitsData, startOfWeek);
 
     const revenueByDay = filterDataByWeek(project?.payments || [], startOfWeek);
-
-    const totalRevenue = project?.payments.reduce(
-      (sum, payment) => sum + payment.value,
-      0
-    );
-
-    setRevenue(totalRevenue);
     setDailyVisits(visitsByDay);
     setDailyRevenue(revenueByDay);
   }, [visitsData, selectedWeek, project]);
@@ -82,17 +75,6 @@ const WeeklyVisitChart = ({ visits, visitsData, project }) => {
         <CardTitle className="flex flex-col gap-4">
           <div className="flex items-center gap-6">
             <div>All Visits: {visits.length}</div>
-            <div>Revenue: ${revenue}</div>
-          </div>
-          <div className="flex items-center gap-4 text-base text-purple-500">
-            <div>Revenue/visitor: ${(revenue / visits.length).toFixed(2)}</div>
-            <div>
-              Conversion rate:{" "}
-              {((project?.payments.length / visits.length) * 100).toFixed(2)}%
-            </div>
-            <div className="flex items-center gap-4 text-base text-purple-500">
-              Registered users: {project?.signIns}
-            </div>
           </div>
         </CardTitle>
         <CardDescription></CardDescription>
