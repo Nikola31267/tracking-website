@@ -371,12 +371,6 @@ const ProjectPage = () => {
           ) : (
             <NoVisitsTable />
           )}
-
-          {project.payments.length > 0 ? (
-            <PaymentsTable payments={payments} />
-          ) : (
-            <NoPaymentsTable />
-          )}
         </>
       )}
       {activeTab === "settings" && (
