@@ -219,7 +219,7 @@ const ProjectPage = () => {
     currentPage * ITEMS_PER_PAGE
   );
 
-  const totalPages = Math.ceil(visits.length / ITEMS_PER_PAGE);
+  const totalPages = Math.ceil(visits?.length / ITEMS_PER_PAGE);
 
   const handleChartChange = (value) => {
     setSelectedChart(value);
@@ -354,7 +354,7 @@ const ProjectPage = () => {
             <ReferrerChart visitsData={visits} />
           </div>
 
-          {visits.length > 0 ? (
+          {visits?.length > 0 ? (
             <VisitTable
               paginatedVisits={paginatedVisits}
               currentPage={currentPage}
