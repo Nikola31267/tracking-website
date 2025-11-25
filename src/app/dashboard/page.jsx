@@ -24,14 +24,16 @@ const Dashboard = () => {
 
   useEffect(() => {
     const checkAuthAndAccess = async () => {
-      if (!localStorage.getItem("pixeltrack-auth")) {
+      if (!localStorage.getItem("data-traffic-auth")) {
         router.push("/sign-in");
         return;
       }
 
       try {
         const response = await axiosInstance.get("/auth/user", {
-          headers: { "x-auth-token": localStorage.getItem("pixeltrack-auth") },
+          headers: {
+            "x-auth-token": localStorage.getItem("data-traffic-auth"),
+          },
         });
         setUser(response.data);
 
@@ -53,7 +55,9 @@ const Dashboard = () => {
     const fetchProjects = async () => {
       try {
         const response = await axiosInstance.get("/dashboard/projects", {
-          headers: { "x-auth-token": localStorage.getItem("pixeltrack-auth") },
+          headers: {
+            "x-auth-token": localStorage.getItem("data-traffic-auth"),
+          },
         });
         const fetchedProjects = response.data.allProjects;
         setProjects(fetchedProjects);

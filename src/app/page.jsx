@@ -1,15 +1,8 @@
 "use client";
-
-import HeroSection from "@/components/HeroSection";
-import Faq from "./(site)/components/Faq";
-import Pricing from "./(site)/components/Pricing";
 import { useState, useEffect } from "react";
 import { axiosInstance } from "@/lib/axios";
 import Loader from "@/components/layout/Loader";
-import FeaturesSection from "@/components/FeaturesSection";
-import CallToAction from "@/components/CallToAction";
 import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
 // import TestimonialGrid from "@/components/Testimonials";
 
 export default function Home() {
@@ -19,11 +12,11 @@ export default function Home() {
 
   useEffect(() => {
     const fetchUserProfile = async () => {
-      if (localStorage.getItem("pixeltrack-auth")) {
+      if (localStorage.getItem("data-traffic-auth")) {
         try {
           const response = await axiosInstance.get("/auth/user", {
             headers: {
-              "x-auth-token": localStorage.getItem("pixeltrack-auth"),
+              "x-auth-token": localStorage.getItem("data-traffic-auth"),
             },
           });
           setUser(response.data);
@@ -49,13 +42,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <HeroSection />
-      <FeaturesSection />
-      {/* <TestimonialGrid /> */}
-      <Pricing user={user} />
-      <Faq />
-      <CallToAction />
-      <Footer />
+      <div className="min-h-[80vh]">Hello</div>
     </>
   );
 }

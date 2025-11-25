@@ -48,7 +48,7 @@ const Profile = ({ isOpen, onClose, initialTab = "account" }) => {
   useEffect(() => {
     const fetchUserProfile = async () => {
       const response = await axiosInstance.get("/auth/user", {
-        headers: { "x-auth-token": localStorage.getItem("pixeltrack-auth") },
+        headers: { "x-auth-token": localStorage.getItem("data-traffic-auth") },
       });
 
       setProfile(response.data);
@@ -114,7 +114,7 @@ const Profile = ({ isOpen, onClose, initialTab = "account" }) => {
         formData,
         {
           headers: {
-            "x-auth-token": localStorage.getItem("pixeltrack-auth"),
+            "x-auth-token": localStorage.getItem("data-traffic-auth"),
             "Content-Type": "multipart/form-data",
           },
         }
@@ -140,7 +140,7 @@ const Profile = ({ isOpen, onClose, initialTab = "account" }) => {
         null,
         {
           headers: {
-            "x-auth-token": localStorage.getItem("pixeltrack-auth"),
+            "x-auth-token": localStorage.getItem("data-traffic-auth"),
           },
         }
       );
@@ -162,13 +162,13 @@ const Profile = ({ isOpen, onClose, initialTab = "account" }) => {
     try {
       const response = await axiosInstance.delete("/auth/delete-account", {
         headers: {
-          "x-auth-token": localStorage.getItem("pixeltrack-auth"),
+          "x-auth-token": localStorage.getItem("data-traffic-auth"),
         },
       });
 
       if (response.status === 200) {
         console.log("Account deleted successfully");
-        localStorage.removeItem("pixeltrack-auth");
+        localStorage.removeItem("data-traffic-auth");
         window.location.href = "/";
       } else {
         console.error("Failed to delete account", response.data);
@@ -450,7 +450,7 @@ const Profile = ({ isOpen, onClose, initialTab = "account" }) => {
                                                 headers: {
                                                   "x-auth-token":
                                                     localStorage.getItem(
-                                                      "pixeltrack-auth"
+                                                      "data-traffic-auth"
                                                     ),
                                                 },
                                               }

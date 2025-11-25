@@ -18,9 +18,9 @@ export default function Login() {
 
   useEffect(() => {
     if (
-      localStorage.getItem("pixeltrack-auth") ||
-      !localStorage.getItem("pixeltrack-auth") === null ||
-      !localStorage.getItem("pixeltrack-auth") === ""
+      localStorage.getItem("data-traffic-auth") ||
+      !localStorage.getItem("data-traffic-auth") === null ||
+      !localStorage.getItem("data-traffic-auth") === ""
     ) {
       router.push("/dashboard");
     } else {
@@ -35,7 +35,7 @@ export default function Login() {
       const response = await axiosInstance.post("/auth/google-signin", {
         token,
       });
-      localStorage.setItem("pixeltrack-auth", response.data.token);
+      localStorage.setItem("data-traffic-auth", response.data.token);
       router.push("/dashboard");
     } catch (error) {
       console.error(

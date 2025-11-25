@@ -22,7 +22,7 @@ const NoAccessDashboard = ({}) => {
       try {
         const response = await axiosInstance.get("/auth/user", {
           headers: {
-            "x-auth-token": localStorage.getItem("pixeltrack-auth"),
+            "x-auth-token": localStorage.getItem("data-traffic-auth"),
           },
         });
         setUser(response.data);
@@ -47,7 +47,7 @@ const NoAccessDashboard = ({}) => {
       try {
         const response = await axiosInstance.get("/auth/user", {
           headers: {
-            "x-auth-token": localStorage.getItem("pixeltrack-auth"),
+            "x-auth-token": localStorage.getItem("data-traffic-auth"),
           },
         });
         setUser(response.data);

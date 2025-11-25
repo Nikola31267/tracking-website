@@ -5,7 +5,6 @@ import { axiosInstance } from "@/lib/axios";
 import Image from "next/image";
 import Profile from "./Profile";
 import { Button } from "./ui/button";
-import Link from "next/link";
 
 const UserButton = () => {
   const [user, setUser] = useState(null);
@@ -21,7 +20,7 @@ const UserButton = () => {
       try {
         const response = await axiosInstance.get("/auth/user", {
           headers: {
-            "x-auth-token": localStorage.getItem("pixeltrack-auth"),
+            "x-auth-token": localStorage.getItem("data-traffic-auth"),
           },
         });
         setUser(response.data);
@@ -67,7 +66,7 @@ const UserButton = () => {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem("pixeltrack-auth");
+    localStorage.removeItem("data-traffic-auth");
     window.location.href = "/sign-in";
   };
 
@@ -139,22 +138,6 @@ const UserButton = () => {
                 onClick={toggleProfileModal}
               >
                 Profile
-              </Button>
-            </li>
-            <li>
-              <Button
-                className="block w-full text-left px-4 py-2 text-sm text-gray-700 bg-transparent border-none cursor-pointer transition-colors hover:bg-gray-100"
-                asChild
-              >
-                <Link
-                  href={
-                    `https://billing.stripe.com/p/login/test_4gw5lG5Ti8YTcs8eUU` +
-                    `?prefilled_email=${user.email}`
-                  }
-                  target="_blank"
-                >
-                  Billing
-                </Link>
               </Button>
             </li>
             <li>

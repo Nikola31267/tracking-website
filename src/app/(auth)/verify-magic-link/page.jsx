@@ -30,7 +30,7 @@ function VerifyMagicLinkPage() {
 
         if (response.status === 200) {
           console.log(data);
-          localStorage.setItem("pixeltrack-auth", data.token);
+          localStorage.setItem("data-traffic-auth", data.token);
           setMessage(data.message);
           setLoading(false);
           router.push("/dashboard");

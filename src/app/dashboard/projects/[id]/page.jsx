@@ -65,7 +65,7 @@ const ProjectPage = () => {
 
   useEffect(() => {
     const checkAuthAndAccess = async () => {
-      if (!localStorage.getItem("pixeltrack-auth")) {
+      if (!localStorage.getItem("data-traffic-auth")) {
         router.push("/sign-in");
         return;
       }
@@ -73,7 +73,7 @@ const ProjectPage = () => {
       try {
         const userResponse = await axiosInstance.get(`/auth/user`, {
           headers: {
-            "x-auth-token": localStorage.getItem("pixeltrack-auth"),
+            "x-auth-token": localStorage.getItem("data-traffic-auth"),
           },
         });
         setUser(userResponse.data);
@@ -99,7 +99,7 @@ const ProjectPage = () => {
           `/dashboard/projects/${id}`,
           {
             headers: {
-              "x-auth-token": localStorage.getItem("pixeltrack-auth"),
+              "x-auth-token": localStorage.getItem("data-traffic-auth"),
             },
           }
         );
@@ -118,7 +118,7 @@ const ProjectPage = () => {
       try {
         const response = await axiosInstance.get("/dashboard/projectsByUsers", {
           headers: {
-            "x-auth-token": localStorage.getItem("pixeltrack-auth"),
+            "x-auth-token": localStorage.getItem("data-traffic-auth"),
           },
         });
         setProjects(response.data);
@@ -190,7 +190,7 @@ const ProjectPage = () => {
         `/dashboard/projects/${id}/visits/${visitToDelete}/delete`,
         {
           headers: {
-            "x-auth-token": localStorage.getItem("pixeltrack-auth"),
+            "x-auth-token": localStorage.getItem("data-traffic-auth"),
           },
         }
       );

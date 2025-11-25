@@ -30,7 +30,7 @@ const Navigation = ({
       <BreadcrumbList>
         <BreadcrumbItem>
           <BreadcrumbLink className="text-lg" href="/dashboard">
-            {user?.fullName}
+            {user?.fullName ? user.fullName : user.username}
           </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />

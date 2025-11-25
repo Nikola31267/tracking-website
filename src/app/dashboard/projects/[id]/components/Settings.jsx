@@ -67,7 +67,7 @@ const Settings = ({ project, setProject, id }) => {
     try {
       const response = await axiosInstance.put(`/settings/${id}`, formData, {
         headers: {
-          "x-auth-token": localStorage.getItem("pixeltrack-auth"),
+          "x-auth-token": localStorage.getItem("data-traffic-auth"),
           "Content-Type": "multipart/form-data",
         },
       });
@@ -93,7 +93,7 @@ const Settings = ({ project, setProject, id }) => {
     try {
       await axiosInstance.delete(`/settings/${id}`, {
         headers: {
-          "x-auth-token": localStorage.getItem("pixeltrack-auth"),
+          "x-auth-token": localStorage.getItem("data-traffic-auth"),
         },
       });
       router.push("/dashboard");

@@ -31,7 +31,7 @@ const SignInModal = () => {
       const response = await axiosInstance.post("/auth/google-signin", {
         token,
       });
-      localStorage.setItem("pixeltrack-auth", response.data.token);
+      localStorage.setItem("data-traffic-auth", response.data.token);
       dialogCloseRef.current.click();
       setTimeout(() => {
         router.push("/dashboard");

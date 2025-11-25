@@ -24,14 +24,16 @@ const New = () => {
 
   useEffect(() => {
     const checkAuthAndAccess = async () => {
-      if (!localStorage.getItem("pixeltrack-auth")) {
+      if (!localStorage.getItem("data-traffic-auth")) {
         router.push("/sign-in");
         return;
       }
 
       try {
         const response = await axiosInstance.get("/auth/user", {
-          headers: { "x-auth-token": localStorage.getItem("pixeltrack-auth") },
+          headers: {
+            "x-auth-token": localStorage.getItem("data-traffic-auth"),
+          },
         });
         setUser(response.data);
 
@@ -54,7 +56,9 @@ const New = () => {
       setLoading(true);
       try {
         const response = await axiosInstance.get("/auth/user", {
-          headers: { "x-auth-token": localStorage.getItem("pixeltrack-auth") },
+          headers: {
+            "x-auth-token": localStorage.getItem("data-traffic-auth"),
+          },
         });
         setUser(response.data);
       } catch (error) {
@@ -76,7 +80,11 @@ const New = () => {
       const response = await axiosInstance.post(
         "/create",
         { projectName },
-        { headers: { "x-auth-token": localStorage.getItem("pixeltrack-auth") } }
+        {
+          headers: {
+            "x-auth-token": localStorage.getItem("data-traffic-auth"),
+          },
+        }
       );
       setProjectId(response.data._id);
       setProjectName(response.data.projectName);
