@@ -15,7 +15,7 @@ const FindSnippet = ({ projectName, projectId, projectPage }) => {
   const router = useRouter();
 
   const codeSnippet =
-    `<script src="https://pixeltrack.startgrid.xyz/js/tracker.js" \n` +
+    `<script src="https://tracking-website-rosy.vercel.app/js/tracker.js" \n` +
     `        data-website-url="${projectName}" data-project-id="${projectId}" async></script>`;
 
   const handleVerifyInstallation = async () => {
