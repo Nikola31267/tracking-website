@@ -38,9 +38,6 @@ import Link from "next/link";
 import Image from "next/image";
 import CountryChart from "./components/CountryChart";
 import { NoVisitsTable } from "./components/NoVisitsTable";
-import { NoPaymentsTable } from "./components/NoPaymentsTable";
-import PaymentsTable from "./components/PaymentsTable";
-import Issues from "./components/Issues";
 
 const ITEMS_PER_PAGE = 10;
 
@@ -57,7 +54,6 @@ const ProjectPage = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("app");
   const [openDropdownId, setOpenDropdownId] = useState(null);
-  const [payments, setPayments] = useState([]);
   const dropdownRef = useRef(null);
   const tableDropdownRef = useRef(null);
   const [currentPage, setCurrentPage] = useState(1);
@@ -109,7 +105,6 @@ const ProjectPage = () => {
         );
         setProject(projectResponse.data);
         setVisits(projectResponse.data.visit);
-        setPayments(projectResponse.data.payments);
       } catch (error) {
         console.error("Error fetching project or visits:", error);
         if (error.response.status === 404 || error.response.status === 403) {
@@ -386,10 +381,6 @@ const ProjectPage = () => {
       )}
       {activeTab === "settings" && (
         <Settings project={project} setProject={setProject} id={id} />
-      )}
-
-      {activeTab === "issues" && (
-        <Issues project={project} setProject={setProject} />
       )}
 
       <AlertDialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>

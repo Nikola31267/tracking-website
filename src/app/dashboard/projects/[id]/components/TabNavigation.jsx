@@ -22,16 +22,6 @@ const TabNavigation = ({ activeTab, setActiveTab, id }) => {
       </button>
       <button
         className={`px-4 py-2 border-b-2 ${
-          activeTab === "issues"
-            ? "border-purple-500 text-purple-500"
-            : "border-transparent"
-        }`}
-        onClick={() => handleTabChange("issues")}
-      >
-        Issues
-      </button>
-      <button
-        className={`px-4 py-2 border-b-2 ${
           activeTab === "settings"
             ? "border-purple-500 text-purple-500"
             : "border-transparent"
