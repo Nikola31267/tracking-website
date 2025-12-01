@@ -27,39 +27,10 @@ const Settings = ({ project, setProject, id }) => {
   const router = useRouter();
   const { toast } = useToast();
 
-  const paymentCode = `    await fetch("https://pixeltrackapi.startgrid.xyz/track/events", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        event_type: "payment",
-        productName: "product_name",
-        paymentValue: 20,
-        projectUrl: "${project.projectName}",
-          projectId: "${project._id}",
-      }),
-    });`;
-
-  const signInCode = `
-        await fetch("https://pixeltrackapi.startgrid.xyz/track/events", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          event_type: "sign_in",
-          projectUrl: "${project.projectName}",
-          projectId: "${project._id}",
-        }),
-      }); `;
-
   const updateProjectSettings = async (updatedData) => {
     setIsUpdating(true);
     const formData = new FormData();
     formData.append("goal", updatedData.goal);
-    formData.append("signInGoal", updatedData.signInGoal);
-    formData.append("paymentGoal", updatedData.paymentGoal);
     if (updatedData.logo) {
       formData.append("logo", updatedData.logo);
     }
@@ -225,8 +196,6 @@ const Settings = ({ project, setProject, id }) => {
                 const updatedData = {
                   goal: e.target.goal.value,
                   logo: project.logo,
-                  signInGoal: e.target.signInGoal.value,
-                  paymentGoal: e.target.paymentGoal.value,
                 };
                 updateProjectSettings(updatedData);
               }}
