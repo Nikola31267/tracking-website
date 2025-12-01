@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { axiosInstance } from "@/lib/axios";
 import Loader from "@/components/layout/Loader";
 import Navbar from "@/components/layout/Navbar";
+import HeroSection from "@/components/HeroSection";
 // import TestimonialGrid from "@/components/Testimonials";
 
 export default function Home() {
@@ -42,7 +43,9 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <div className="min-h-[80vh]">Hello</div>
+      <div className="min-h-screen">
+        <HeroSection />
+      </div>
     </>
   );
 }
