@@ -241,39 +241,6 @@ const Settings = ({ project, setProject, id }) => {
                   defaultValue={project.goal}
                   className="w-full p-2 border rounded-lg focus-visible:ring-purple-500"
                 />
-                <Label htmlFor="signInGoal" className="text-md">
-                  Register Users Goal
-                </Label>
-                <Input
-                  id="signInGoal"
-                  placeholder="Enter registered users goal"
-                  defaultValue={project.signInGoal}
-                  className="w-full p-2 border rounded-lg focus-visible:ring-purple-500"
-                />
-                <Label htmlFor="paymentGoal" className="text-md">
-                  Revenue Goal
-                </Label>
-                <Input
-                  id="paymentGoal"
-                  placeholder="Enter revenue goal"
-                  defaultValue={project.paymentGoal}
-                  className="w-full p-2 border rounded-lg focus-visible:ring-purple-500"
-                />
-
-                <div className="flex items-center gap-2 py-2">
-                  <CodeSnippetDialog
-                    title="Add Payment"
-                    code={paymentCode}
-                    toast={toast}
-                    dialogTitle="Payment Tracking Code Snippet"
-                  />
-                  <CodeSnippetDialog
-                    title="Add Sign in"
-                    code={signInCode}
-                    toast={toast}
-                    dialogTitle="User Registering Tracking Code Snippet"
-                  />
-                </div>
               </div>
               <Button
                 variant="purpleOutline"

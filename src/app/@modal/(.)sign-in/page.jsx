@@ -86,7 +86,7 @@ const SignInModal = () => {
                 height={56}
               />
 
-              <h2 className="text-xl font-semibold">PixelTrack</h2>
+              <h2 className="text-xl font-semibold">Data Traffic App</h2>
             </div>
           </DialogTitle>
           <DialogDescription></DialogDescription>
