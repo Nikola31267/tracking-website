@@ -32,7 +32,6 @@ const WeeklyVisitChart = ({ visits, visitsData, project }) => {
   const [dailyVisits, setDailyVisits] = useState({});
   const [dailyRevenue, setDailyRevenue] = useState({});
   const [selectedWeek, setSelectedWeek] = useState("current");
-  const [revenue, setRevenue] = useState(0);
 
   useEffect(() => {
     const calculateStartOfWeek = (weeksAgo) => {
@@ -57,10 +56,7 @@ const WeeklyVisitChart = ({ visits, visitsData, project }) => {
       selectedWeek === "current" ? calculateStartOfWeek(0) : null;
 
     const visitsByDay = filterDataByWeek(visitsData, startOfWeek);
-
-    const revenueByDay = filterDataByWeek(project?.payments || [], startOfWeek);
     setDailyVisits(visitsByDay);
-    setDailyRevenue(revenueByDay);
   }, [visitsData, selectedWeek, project]);
 
   const chartData = Object.keys(dailyVisits).map((date) => ({
@@ -101,10 +97,6 @@ const WeeklyVisitChart = ({ visits, visitsData, project }) => {
               label: "Visits",
               color: "#6b21a8",
             },
-            revenue: {
-              label: "Revenue",
-              color: "#9b4bcd",
-            },
           }}
           className="h-[400px] w-full"
         >
@@ -138,13 +130,6 @@ const WeeklyVisitChart = ({ visits, visitsData, project }) => {
 
               <Tooltip content={<ChartTooltipContent />} />
               <Legend />
-
-              <Bar
-                yAxisId="right"
-                dataKey="revenue"
-                fill="#d1a1e3"
-                radius={[4, 4, 0, 0]}
-              />
 
               <Line
                 yAxisId="left"
