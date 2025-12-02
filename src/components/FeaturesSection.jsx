@@ -2,220 +2,110 @@
 
 import { useState } from "react";
 import {
-  LineChart,
-  Line,
-  AreaChart,
-  Area,
-  BarChart,
-  Bar,
-  PieChart,
-  Pie,
-  Cell,
-  ResponsiveContainer,
-} from "recharts";
-import { ChartContainer } from "@/components/ui/chart";
-import SyntaxHighlighter from "react-syntax-highlighter/dist/cjs/light";
-import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
-import { BarChart2, Clock, Plug, Target } from "lucide-react";
-
-const features = [
-  {
-    name: "Real-time Data Streams",
-    description:
-      "Watch your website traffic, revenue and user authentication as it happens with our lightning-fast streaming APIs.",
-    icon: <Clock className="text-white" />,
-    chart: (
-      <LineChart
-        width={200}
-        height={100}
-        data={[
-          { name: "A", value: 300 },
-          { name: "B", value: 600 },
-          { name: "C", value: 400 },
-          { name: "D", value: 700 },
-          { name: "E", value: 500 },
-        ]}
-      >
-        <Line
-          type="monotone"
-          dataKey="value"
-          stroke="#ab57ff"
-          strokeWidth={2}
-          dot={false}
-        />
-      </LineChart>
-    ),
-  },
-  {
-    name: "Goals",
-    description:
-      "Set goals and get notified everytime something big happens to your website.",
-    icon: <Target className="text-white" />,
-    chart: (
-      <AreaChart
-        width={200}
-        height={100}
-        data={[
-          { name: "A", actual: 400, predicted: 300 },
-          { name: "B", actual: 300, predicted: 400 },
-          { name: "C", actual: 500, predicted: 600 },
-          { name: "D", actual: 600, predicted: 800 },
-          { name: "E", actual: 700, predicted: 1000 },
-        ]}
-      >
-        <Area
-          type="monotone"
-          dataKey="actual"
-          stroke="#9c27b0"
-          fill="#9c27b0"
-          fillOpacity={0.3}
-        />
-        <Area
-          type="monotone"
-          dataKey="predicted"
-          stroke="#ff4081"
-          fill="#ff4081"
-          fillOpacity={0.3}
-        />
-      </AreaChart>
-    ),
-  },
-  {
-    name: "Multi-dimensional Analysis",
-    description:
-      "Explore your data from every angle with our advanced multi-dimensional analysis tools.",
-    icon: <BarChart2 className="text-white" />,
-    chart: (
-      <BarChart
-        width={200}
-        height={100}
-        data={[
-          { name: "A", dim1: 300, dim2: 400, dim3: 500 },
-          { name: "B", dim1: 400, dim2: 500, dim3: 600 },
-          { name: "C", dim1: 500, dim2: 600, dim3: 700 },
-          { name: "D", dim1: 600, dim2: 700, dim3: 800 },
-        ]}
-      >
-        <Bar dataKey="dim1" stackId="a" fill="#6c5ce7" />
-        <Bar dataKey="dim2" stackId="a" fill="#7a6ee9" />
-        <Bar dataKey="dim3" stackId="a" fill="#8b7cef" />
-      </BarChart>
-    ),
-  },
-  {
-    name: "Easy Integration",
-    description:
-      "Start using the ultimate tracking API with just one line of code",
-    icon: <Plug className="text-white" />,
-    chart: (
-      <div className="relative">
-        <div className="relative min-h-[9.5rem] w-full grow">
-          <div className="absolute bottom-0 left-0 right-0 top-0 overflow-hidden rounded-tl-xl bg-gray-900 rounded-xl">
-            <div className="absolute top-4 right-4 flex items-center space-x-1">
-              <div className="h-2 w-2 rounded-full bg-red-500" />
-              <div className="h-2 w-2 rounded-full bg-yellow-500" />
-              <div className="h-2 w-2 rounded-full bg-green-500" />
-            </div>
-
-            <div className="flex bg-gray-800/40 ring-1 ring-white/5">
-              <div className="-mb-px flex text-sm/6 font-medium text-gray-400">
-                <div className="border-b border-r border-b-white/20 border-r-white/10 bg-white/5 px-4 py-2 text-white">
-                  layout.js
-                </div>
-              </div>
-            </div>
-
-            <div className="overflow-hidden">
-              <div className="max-h-[30rem]">
-                <SyntaxHighlighter
-                  language="typescript"
-                  style={{
-                    ...oneDark,
-                    'pre[class*="language-"]': {
-                      ...oneDark['pre[class*="language-"]'],
-                      background: "transparent",
-                      overflow: "hidden",
-                    },
-                    'code[class*="language-"]': {
-                      ...oneDark['code[class*="language-"]'],
-                      background: "transparent",
-                      fontFamily: "inherit",
-                      fontSize: "inherit",
-                      fontWeight: "inherit",
-                      letterSpacing: "inherit",
-                      whiteSpace: "inherit",
-                    },
-                  }}
-                >
-                  {`
-<script src="https:/pixeltrack.startgrid.xyz/js/tracker.js" \n` +
-                    `        data-website-url="WEBSITE_URL" 
-        data-project-id="111111111111111" async></script>
-                    `}
-                </SyntaxHighlighter>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="pointer-events-none absolute inset-px rounded-lg shadow ring-1 ring-black/5 max-lg:rounded-b-[2rem] lg:rounded-r-[2rem]" />
-      </div>
-    ),
-  },
-];
+  Zap,
+  ArrowRight,
+  BarChart3,
+  Shield,
+  TrendingUp,
+  Globe,
+  Lock,
+} from "lucide-react";
 
 export default function FeaturesSection() {
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
   return (
-    <div className="bg-white py-24 sm:py-32">
-      <div className="relative">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
-          <div id="features" className="mx-auto max-w-2xl lg:text-center">
-            <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-              Revolutionize Your Data Insights
-            </h1>
-            <p className="mt-6 text-lg leading-8 text-gray-600">
-              Unlock the full potential of your data with our cutting-edge
-              tracking API.
+    <section id="features" className="py-24 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            Powerful Features
+          </h2>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            Everything you need to monitor, analyze, and optimize your network
+            traffic
+          </p>
+        </div>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="group p-8 bg-gradient-to-br from-blue-50 to-white rounded-2xl border border-gray-100 hover:border-blue-200 hover:shadow-xl transition-all">
+            <div className="w-14 h-14 bg-blue-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+              <BarChart3 className="w-7 h-7 text-white" />
+            </div>
+            <h3 className="text-xl font-bold text-gray-900 mb-3">
+              Real-Time Analytics
+            </h3>
+            <p className="text-gray-600 leading-relaxed">
+              Monitor your traffic patterns with live updates and instant
+              insights into bandwidth usage and performance metrics.
             </p>
           </div>
-          <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
-            <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-2">
-              {features.map((feature, index) => (
-                <div
-                  key={feature.name}
-                  className="relative overflow-hidden rounded-2xl bg-white p-10"
-                >
-                  <dt className="text-base font-semibold leading-7 text-black">
-                    <div className="absolute left-0 top-0 h-full w-2" />
-                    <div className="mb-6 flex h-10 w-10 items-center justify-center rounded-lg bg-purple-500">
-                      {feature.icon}
-                    </div>
-                    {feature.name}
-                  </dt>
-                  <dd className="mt-2 text-base leading-7 text-gray-600">
-                    {feature.description}
-                  </dd>
-                  <div className="mt-6 flex justify-center">
-                    <ChartContainer config={{}} className="w-full h-[100px]">
-                      <ResponsiveContainer>{feature.chart}</ResponsiveContainer>
-                    </ChartContainer>
-                  </div>
-                  {hoveredIndex === index && (
-                    <div
-                      className="absolute inset-0 bg-gradient-to-r"
-                      style={{
-                        backgroundImage: `linear-gradient(45deg, ${feature.color}22, ${feature.color}00)`,
-                      }}
-                    />
-                  )}
-                </div>
-              ))}
-            </dl>
+
+          <div className="group p-8 bg-gradient-to-br from-green-50 to-white rounded-2xl border border-gray-100 hover:border-green-200 hover:shadow-xl transition-all">
+            <div className="w-14 h-14 bg-green-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+              <Shield className="w-7 h-7 text-white" />
+            </div>
+            <h3 className="text-xl font-bold text-gray-900 mb-3">
+              Advanced Security
+            </h3>
+            <p className="text-gray-600 leading-relaxed">
+              Detect anomalies and potential threats with AI-powered security
+              monitoring and instant alerts.
+            </p>
+          </div>
+
+          <div className="group p-8 bg-gradient-to-br from-orange-50 to-white rounded-2xl border border-gray-100 hover:border-orange-200 hover:shadow-xl transition-all">
+            <div className="w-14 h-14 bg-orange-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+              <Zap className="w-7 h-7 text-white" />
+            </div>
+            <h3 className="text-xl font-bold text-gray-900 mb-3">
+              Lightning Fast
+            </h3>
+            <p className="text-gray-600 leading-relaxed">
+              Process millions of data points per second with our optimized
+              infrastructure and edge computing.
+            </p>
+          </div>
+
+          <div className="group p-8 bg-gradient-to-br from-cyan-50 to-white rounded-2xl border border-gray-100 hover:border-cyan-200 hover:shadow-xl transition-all">
+            <div className="w-14 h-14 bg-cyan-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+              <TrendingUp className="w-7 h-7 text-white" />
+            </div>
+            <h3 className="text-xl font-bold text-gray-900 mb-3">
+              Predictive Insights
+            </h3>
+            <p className="text-gray-600 leading-relaxed">
+              Leverage machine learning to forecast traffic trends and optimize
+              resource allocation proactively.
+            </p>
+          </div>
+
+          <div className="group p-8 bg-gradient-to-br from-purple-50 to-white rounded-2xl border border-gray-100 hover:border-purple-200 hover:shadow-xl transition-all">
+            <div className="w-14 h-14 bg-purple-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+              <Globe className="w-7 h-7 text-white" />
+            </div>
+            <h3 className="text-xl font-bold text-gray-900 mb-3">
+              Global Coverage
+            </h3>
+            <p className="text-gray-600 leading-relaxed">
+              Monitor traffic across multiple regions and data centers with
+              unified dashboard and reporting.
+            </p>
+          </div>
+
+          <div className="group p-8 bg-gradient-to-br from-rose-50 to-white rounded-2xl border border-gray-100 hover:border-rose-200 hover:shadow-xl transition-all">
+            <div className="w-14 h-14 bg-rose-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+              <Lock className="w-7 h-7 text-white" />
+            </div>
+            <h3 className="text-xl font-bold text-gray-900 mb-3">
+              Enterprise Grade
+            </h3>
+            <p className="text-gray-600 leading-relaxed">
+              Bank-level encryption, compliance certifications, and dedicated
+              support for mission-critical operations.
+            </p>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

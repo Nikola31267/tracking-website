@@ -4,7 +4,9 @@ import { axiosInstance } from "@/lib/axios";
 import Loader from "@/components/layout/Loader";
 import Navbar from "@/components/layout/Navbar";
 import HeroSection from "@/components/HeroSection";
-// import TestimonialGrid from "@/components/Testimonials";
+import FeaturesSection from "@/components/FeaturesSection";
+import TrustedBySection from "@/components/TrustedBySection";
+import CallToAction from "@/components/CallToAction";
 
 export default function Home() {
   const [user, setUser] = useState(null);
@@ -43,9 +45,10 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <div className="min-h-screen">
-        <HeroSection />
-      </div>
+      <HeroSection />
+      <FeaturesSection />
+      <TrustedBySection />
+      <CallToAction />
     </>
   );
 }
